@@ -1,29 +1,77 @@
-# Sistema de Gestão de Moedas
+Resumo do Projeto: Sistema de Gerenciamento de Moedas para Alunos
+Objetivo: Criar um sistema que permite aos alunos acumularem moedas virtuais através de bons comportamentos ou perderem moedas por comportamentos inadequados. As moedas podem ser trocadas por brindes no colégio.
 
-Um sistema em PHP e MySQL para gerenciar o saldo de moedas de alunos.
+Principais Funcionalidades
+1. Alunos
+Cada aluno possui um crachá com QR Code único.
+Ao escanear o QR Code, o aluno acessa uma página que exibe:
+Seu nome.
+Saldo atual de moedas.
+Histórico de transações (ganhos e perdas de moedas).
+Os alunos não precisam de login para acessar o saldo.
+2. Professores
+Professores têm acesso ao sistema via login.
+Após o login, podem:
+Adicionar moedas para um aluno (ex.: "Fez atividade" +5).
+Remover moedas de um aluno (ex.: "Conversa em sala" -10).
+Visualizar o saldo e histórico de transações de qualquer aluno.
+3. Admin (Opcional)
+Pode cadastrar novos alunos e professores.
+Gera QR Codes para os alunos.
+Gerencia os registros no banco de dados.
+Estrutura do Sistema
+1. Frontend (Interfaces)
+Alunos: Página simples e visualmente atrativa, mostrando saldo e histórico.
+Professores: Página para login, listagem de alunos e controle de moedas.
+QR Code: Gerado para cada aluno, vinculado ao ID único no banco de dados.
+2. Backend
+Rotas principais:
+aluno.php: Exibe saldo e histórico do aluno com base no ID.
+professor.php: Dashboard para professores após login.
+add_moedas.php: Adiciona moedas a um aluno.
+remove_moedas.php: Remove moedas de um aluno.
+Segurança:
+Sistema de autenticação para professores.
+Dados do aluno acessíveis somente pelo QR Code.
+3. Banco de Dados
+Tabelas:
+alunos: Dados do aluno (ID, nome, moedas, link do QR Code).
+professores: Dados de login do professor (ID, nome, email, senha).
+transacoes: Histórico de transações (quem, quanto, descrição e quando).
+Fluxo do Sistema
+Cadastro de Alunos e Professores
 
-## Funcionalidades
+O administrador cadastra alunos e professores no sistema.
+Geração de QR Codes
 
-- Visualização do saldo de moedas dos alunos.
-- Atualização de moedas por professores.
-- Geração de QR Codes para acesso rápido.
+Cada aluno recebe um QR Code com o link exclusivo que leva à página de saldo.
+Uso pelos Alunos
 
-## Tecnologias
+Os alunos escaneiam o QR Code para ver moedas acumuladas e histórico.
+Uso pelos Professores
 
-- PHP
-- MySQL
-- HTML
-- JavaScript
+Professores fazem login, selecionam alunos e gerenciam as moedas.
+Troca de Moedas por Brindes
 
-## Estrutura do Projeto
+Alunos podem trocar moedas acumuladas por brindes, que são registrados manualmente ou via sistema (opcional).
+Tecnologias e Ferramentas
+Frontend:
 
-/game/ │ ├── config.php # Conexão com o banco de dados ├── aluno.php # Visualização de dados do aluno ├── atualizar_moedas.php # Atualização de saldo de moedas └── qrcodes/ # QR Codes gerados
+HTML/CSS/JavaScript: Interfaces responsivas e intuitivas.
+Backend:
 
+PHP: Processamento de dados e lógica do sistema.
+Banco de Dados:
 
-Execute o script Python para gerar QR Codes.
+MySQL: Armazenamento das informações dos alunos, professores e transações.
+Outras Ferramentas:
 
-Uso
-Acesse:
-
-Para alunos: https://echotec.online/game/aluno.php?id=1
-Para professores: https://echotec.online/game/atualizar_moedas.php
+Biblioteca de QR Code: Para geração de QR Codes vinculados aos alunos.
+Principais Usuários
+Alunos: Acompanham moedas e histórico.
+Professores: Gerenciam moedas para os alunos.
+Admin (Opcional): Gerencia o cadastro de alunos e professores.
+Benefícios do Projeto
+Incentiva bons comportamentos de forma gamificada.
+Promove um sistema justo e transparente para alunos e professores.
+Facilita a gestão de recompensas no ambiente escolar.
